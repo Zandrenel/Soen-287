@@ -1,0 +1,35 @@
+{% extends 'Template_base.html' %}
+{% block styles%}
+{{ super() }}
+<script src="/static/javaScript/verifications.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<div id="RegisterForm" class="d-flex">
+	<form id="registerForm" action="/processRegistration" method="POST">
+		<div class="form-group">
+			<div class="inputLogReg">
+				{{form.username.label}}{{form.username(placeholder='Username',id='userName',onblur='verifyRegister()')}}
+				<div class="errorMessage" id="error_user"><caption> </caption></div> 
+			</div>
+			<div class="inputLogReg">
+				{{form.password.label}}{{form.password(placeholder='Password',id='password',onblur='verifyRegister()')}}
+				<div class="errorMessage" id="error_pass"><caption> </caption></div>
+			</div>
+			<div class="inputLogReg">
+				{{form.ConfirmPassword.label}}{{form.ConfirmPassword(placeholder='Confirm Password',id='PassAgain',onblur='verifyRegister()')}}
+				<div class="errorMessage" id="error_pass2"><caption> </caption></div>
+			</div>
+			<div class="inputLogReg">
+				{{form.email.label}}{{form.email(placeholder='Email',id='Email',onblur='verifyRegister()')}}
+				<div class="errorMessage" id="error_email"><caption> </caption></div>
+			</div>
+			<div id="submitRegister" class="d-flex justify-content-md-center">
+				<button class="btn-danger" type="submit">Register</button>
+			</div>
+		</div>
+		{{form.csrf_token}}
+	</form>
+</div>
+{% endblock %}

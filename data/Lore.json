@@ -1,0 +1,23 @@
+{
+    "Lore": {
+        "Cities": {
+            "NorthSouth": {
+                "text": "NorthSouth is called West by some, others call it East, they can't really agree on a name though."
+            },
+            "North": {
+                "text": "\t\t\t\tThis one is called north, it has many northern facts.\r\n\t\t\t"
+            },
+            "South": {
+                "text": "\t\t\t\topposite direction of North, but not a bad place.\r\n\t\t\t"
+            },
+            "": {
+                "text": "\t\t\t"
+            }
+        },
+        "Word": {
+            "Basic": {
+                "text": "It once was a ball, it started as one, but then, one day, in the future, a new past; it grew, with the help of meteors and lava, and from there."
+            }
+        }
+    }
+}

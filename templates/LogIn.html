@@ -1,0 +1,23 @@
+{% extends 'Template_base.html' %}
+{% block body %}
+{% block styles%}
+{{ super() }}
+<script src="../static/javaScript/verifications.js"></script>
+{% endblock %}
+<div id="LogInForm" class="d-flex">
+	<form action="/processLogIn" method="POST">
+		<div class="inputLogReg">
+			{{form.username.label}}{{form.username(id="userName",type="text",placeholder="Username",onchange="verifyLogIn()")}}
+			<div class="errorMessage" id="error_user"><caption> </caption></div>
+		</div>
+		<div class="inputLogReg">
+			{{form.password.label}}{{form.password(id="password",type="password",placeholder="Password",onchange="verifyLogIn()") }} 
+			<div class="errorMessage " id="error_pass"><caption></caption></div>
+		</div>
+		<div id="submitLogIn" class="d-flex justify-content-md-center">
+			<button class="btn-danger" type="button">Log In</button>
+		</div>
+		{{form.csrf_token}}
+	</form>
+</div>
+{% endblock %}

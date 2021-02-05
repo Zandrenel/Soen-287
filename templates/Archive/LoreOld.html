@@ -1,0 +1,128 @@
+{% extends 'Template_base.html' %}
+{% block body %}
+<head><title>RighgteousFruit/Lore</title>
+	
+</head>
+<script type="text/javascript" src="/static/javaScript/editorMode.js"></script>
+<script>
+var listEle = JSON.parse("data/Lore.json")
+
+
+	function addContent(tab){
+		tabcontent=JSON.parse(JSON.stringify(tab));
+		var header=Object.keys(tabcontent)
+		var results="";
+		for(var i=0;i<header.length;i++){
+			results+='<h2>'+header[i]+'</h2>'+'------------------- <pre>'+tab[header[i]].text+'</pre><br/>';
+			
+		}
+		document.getElementById('body').innerHTML=results;
+		
+	}
+	function addContentAdmin(tab,tabName){
+		tabcontent=JSON.parse(JSON.stringify(tab));
+		var header=Object.keys(tabcontent)
+		var results="";
+		for(var i=0;i<header.length;i++){
+			let edit = 'edit';
+			let editPath= "/Lore/"+edit+"/"+tabName+"/"+header[i];
+			//let deletePath= "/Lore/delete/"+tabName+"/"+header[i];
+			results+='<h2>'+header[i]+'</h2>'+'-------------------  <pre>'+tab[header[i]].text+'</pre><br/><a class="mod" href="'+editPath+'">Edit </a><p class="mod" onclick="verifyDelete('+'\''+tabName+'\''+','+'\''+header[i]+'\''+')">Delete</p>';
+			
+		}
+		let addPath = "Lore/add/"+tabName+"/Add";
+		document.getElementById('body').innerHTML=results +'<br/><br/><a class="mod" href="'+addPath+'">Add Content</a>';
+		
+	}
+
+</script>
+{% if session['Admin'] %}
+	{% if mode=='edit' %}
+	<form action="/Lore/ProcessEdit/{{TabName}}/{{header}}" method='POST'>
+		<div class="form-group">
+			<div>
+				<input class="form-control" name="HeaderName" value="{{header}}">
+			</div>
+			<div>
+			<textarea rows="10" class="form-control" name="Descriptions">
+				{{txt}}
+			</textarea>
+				</div>
+			<button type="submit">Confirm Edit</button>
+		</div>
+	</form>
+	{% elif mode=='add' %}
+	
+	<form action="/Lore/ProcessAdd/{{TabName}}" method='POST'>
+		<div class="form-group">
+			<div>
+				<input class="form-control" name="HeaderName">
+			</div>
+			<div>
+			<textarea rows="10" class="form-control" name="Descriptions">
+			</textarea>
+				</div>
+			<button type="submit">Confirm Add</button>
+		</div>
+	</form>
+	{% else %}
+	<div class="col-md-2 shadow rounded-bottom" id="sideBar">
+				<ul class="nav nav-tabs flex-column">
+					{% for keys in Lore.Lore %}
+					<li class="nav-item" id="TabOf{{keys}}">
+						<a class="nav-link" data-toggle="pill" href="#{{keys}}" onclick="addContentAdmin({{Lore.Lore[keys]}},'{{keys}}')"><p>{{keys}}</p></a>
+						<p class="mod" onclick="verifyDeleteTab('{{keys}}')">Delete </p><p class="mod" onclick="replaceWithInput('{{keys}}')">Edit</p>
+					</li>
+					{% endfor %}
+					<div id="addTab">
+						<p class="mod" onclick="addTab()">Add Tab</p>
+					</div>
+				</ul>
+			</div>
+			<div class="col-md-10 container-fluid bg-success tab"  id="body">
+				{% for key in Lore.Lore %}
+				<div class="tab-content">
+					<div class="tab-pane container" id="{{key}}">
+					<p>
+						-----------------------<br />
+						{% for keys in Lore.Lore[key] %}
+						<div id="{{Lore.Lore[key][keys]}}">
+						{{Lore.Lore[key][keys]["text"] }}
+						</div>
+						{% endfor %}
+						<br />-----------------------<br />
+					</p></div>
+				</div>
+				{% endfor %}
+				
+			</div>
+	{% endif %}
+{% else %}
+<div class="col-md-2 shadow rounded-bottom" id="sideBar">
+			<ul class="nav nav-tabs flex-column">
+				{% for keys in Lore.Lore %}
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="pill" href="#{{keys}}" onclick="addContent({{Lore.Lore[keys]}})">{{keys}}</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="col-md-10 container-fluid bg-success tab"  id="body">
+			{% for key in Lore.Lore %}
+			<div class="tab-content">
+				<div class="tab-pane container" id="{{key}}">
+				<p>
+					-----------------------<br />
+					{% for keys in Lore.Lore[key] %}
+					<div id="{{Lore.Lore[key][keys]}}">
+					{{Lore.Lore[key][keys]["text"] }}
+					</div>
+					{% endfor %}
+					<br />-----------------------<br />
+				</p></div>
+			</div>
+			{% endfor %}
+			
+		</div>
+{% endif %}
+{% endblock %}

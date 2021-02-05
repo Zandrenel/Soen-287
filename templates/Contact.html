@@ -1,0 +1,12 @@
+{%extends 'Template_base.html'%}
+
+{% block body %}
+<div class="bg-success">
+	<h1>Ways to Contact me.</h1>
+	{% for keys in data['Contact'] %}
+	<div>
+		<label>{{keys}}</label><p>{{data['Contact'][keys]}}</p>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

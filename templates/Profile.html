@@ -1,0 +1,10 @@
+{% extends 'Template_base.html' %}
+
+{% block body %}
+<div class="bg-success">
+	<div id="ProfilePic"></div>
+	<div class="ProfileItem"><h4>{{user[0]}}</h4></div>
+	<div class="ProfileItem"><label>Profile Level: </label>{{user[4]}}</div>
+	<div class="ProfileItem"><label>Email: </label>{{user[2]}}</div>
+</div>
+{% endblock %}

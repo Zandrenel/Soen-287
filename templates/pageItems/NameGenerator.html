@@ -1,0 +1,51 @@
+<script type="text/javascript">
+	function changeNames(nameShown){
+		console.log(nameShown);
+		if(nameShown=="Orc"){
+			document.getElementById("OrcName").className="d-block";
+			console.log("Orc names button should be showing");
+		}
+		else{
+			document.getElementById("OrcName").className="d-none";
+			console.log("TBD should be hidden");
+		}
+		
+		if(nameShown=="TBD"){
+			document.getElementById("output").innerHTML=""
+			document.getElementById("TBD").className="d-block";
+		}
+		else
+			document.getElementById("TBD").className="d-none";
+			
+		if(nameShown=="Names"){
+			document.getElementById("output").innerHTML=""
+			document.getElementById("defaultNames").className="d-block";
+		}
+		else
+			document.getElementById("defaultNames").className="d-none";
+	}
+</script>
+<p>
+	<div>
+		<form>
+			<select name="Names" class="custom-select" onchange="changeNames(this.value)">
+   				<option selected>Names</option>
+   				<option value="Orc">Orc</option>
+				<option value="TBD">TBD</option>
+  			</select>
+		</form>
+	</div>
+	<div id="defaultNames">
+		Default
+	</div>
+	<div id="OrcName" class='d-none'>
+		<button onClick='orcNamesTrue()'>Names</button>
+	</div>
+	<div id="TBD" class='d-none'>
+		<button onClick='document.getElementById("output").innerHTML=""'>Names</button>
+	</div>
+	<div id="output">
+	
+	</div>
+	
+</p>

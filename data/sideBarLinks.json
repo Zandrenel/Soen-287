@@ -1,0 +1,19 @@
+{
+	"1":{
+		"hook":"Apples",
+		"link":"https//:www.google.com",
+		"altLink":"apple"
+	},
+	"2":{
+		"hook":"cucumber",
+		"link":"https//:www.google.com"
+	},
+	"3":{
+		"hook":"PineApple",
+		"link":"https//:www.google.com"
+	},
+	"4":{
+		"hook":"Mango",
+		"link":"https//:www.google.com"
+	}
+}

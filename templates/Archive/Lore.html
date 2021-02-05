@@ -1,0 +1,45 @@
+{% extends 'Template_base.html' %}
+  
+{% block head %}
+
+{% endblock %}
+{% block body %}
+{{form.csrf_token}}
+<script type="text/javascript" src="/static/javaScript/editorMode.js" ></script>
+{% if session['Admin'] %}
+<div class="col-md-9 container-fluid bg-success" id="body">
+	{% for keys in Lore %}
+	<form id="editTab{{keys}}Form" action="/Lore/editTab/{{keys}}" method="POST">
+		<div id="{{keys}}">{{keys}}</div><br/>
+		<div id="editTabButton{{keys}}">
+			<button type="button" onclick="tabEditForm('{{keys}}')">Edit</button>
+		</div>
+	</form>
+		-------------------
+		{% for header in Lore[keys] %}
+		<pre>
+			<div id="{{header}}">{{header}}</div>:<div id="{{header}}Description">{{Lore[keys][header]}}</div>
+			<div id="editHeaderButton">
+				<button type="button" onclick="HeaderEditForm({{header}})">Edit</button>
+			</div>
+			<div id="editDescriptionButton">
+				<button type="button" onclick="DescriptionEditForm({{header}}Description)">Edit</button>
+			</div>
+		</pre>
+		{% endfor %}
+	{% endfor %}
+</div>
+{% else %}
+<div class="col-md-9 container-fluid bg-success" id="body">
+	{% for keys in Lore %}
+		{{keys}}<br/>
+		-------------------
+		{% for header in Lore[keys] %}
+		<pre>
+			{{header}}:{{Lore[keys][header]}}
+		</pre>
+		{% endfor %}
+	{% endfor %}
+</div>
+{% endif %}
+{% endblock %}

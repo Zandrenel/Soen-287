@@ -1,0 +1,26 @@
+ <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        		<span class="navbar-toggler-icon"></span>
+    		</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			
+				<ul class="nav navbar-nav navbar-left">
+					
+					<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+					<li class="nav-item" onclick="this.clasName ='active';"><a class="nav-link" href="/Lore">Lore</a></li>
+					<li class="nav-item"><a class="nav-link" href="/Tools" >Tools</a></li>
+					<li class="nav-item"><a class="nav-link" href ="/Contact">Contact</a></li>
+				</ul>
+				{% if session['username'] == null %}
+				<ul class="nav navbar-nav ml-auto">
+     	 			<li class="nav-item"><a class="nav-link" href="/Register"><Span class="fas fa-user"></Span>Register</a></li>
+     	 			<li class="nav-item" ><a class="nav-link" href="/LogIn"><span class="fas fa-sign-in-alt"></span>Login</a></li>
+				</ul>
+				{% else %}
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/Profile">{{session['username']}}</a></li>
+					<li class="nav-item" ><a class="nav-link" href="/LogOut"><span class="fas fa-sign-in-alt"></span>Log Out</a></li>
+				</ul>
+				{% endif %}
+			</div>
+		</nav>

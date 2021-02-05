@@ -1,0 +1,88 @@
+
+#header{
+	background-image:url("Pictures/tiddles_blanket_banner-verticle.jpg");
+	background-size:cover;
+	background-position:bottom;
+	height:10vw;
+
+}
+h1, #headerHome{
+	padding-top:3.5vw;
+	font-family:'Times New Roman', Times, serif;
+	font-size-adjust: initial;
+	text-align: center;
+	color:white;
+}
+
+#body{
+	
+	float:left;
+	background-image:url("Pictures/SnakeSkinBackground.jpg");
+	background-opacity:70%;
+	color:white;
+}
+#sideBar{
+	height:inherit-body;
+	float:left;
+	background-image:url("Pictures/Tiddles_Dark.jpg");
+	background-size:10vw;
+	color:#fffffd;
+
+}
+
+.error{
+	color:red;
+	border-color:red;
+	border-style: groove;
+}
+label {
+	color:#ffffff;
+}
+.errorMessage{
+	background-color: lightgray;
+	color:red;
+	font-family:Cambria;
+	font-size: medium;
+}
+#LogInForm{
+	background-color:#ff00ff;
+	margin-top: auto;
+	width: block;
+	height:15vw;
+}
+#RegisterForm{
+	background-color:#ff00ff;
+	margin-top: auto;
+	width: block;
+	height:20vw;
+}
+.inputLogReg{
+	height: 60px;
+	padding-right:50vw;
+}
+#submitLogIn{
+	float: left
+}
+
+.mod{
+	text-decoration: none;
+	font-size: 12px;
+	color:#990e0c;
+}
+.mod:hover{
+	text-decoration: none;
+	color:blue;
+	cursor:pointer;
+}
+#ProfilePic{
+	background-image:url(Pictures/Tiddles_Ball.jpg);
+	background-size:cover;
+	width: 100px;
+	height:100px;
+	padding:10px;
+	float:left;
+}
+.profileItem{
+	padding:20px;
+	float:left;
+}

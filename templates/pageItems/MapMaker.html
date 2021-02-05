@@ -1,0 +1,36 @@
+<div>
+	<form>
+		<div>
+			<label>Size</label>
+			<input id="MapSize" type="number" min="0" max="10">
+			<label>Size</label>
+		</div>
+		<div>
+			<label>Population</label>
+			<input id="population" type="number" min="0" max="10" name>
+		</div>
+		<div>
+			<input id="mapName" type="text" Map Name placeholder="Map Name">
+		</div>
+		<div>
+			<select id="biome" name="biome" class="custom-select">
+   				<option selected>Biome</option>
+    			<option value="">Dessert</option>
+   				<option value="">Tropical</option>
+				<option value="">Mixed</option>
+				<option value="">Dungeon</option>
+  			</select>
+		</div>
+		<div>
+			<select id="Boarders" name="Coast?" class="custom-select">
+   				<option selected>Coastal Border</option>
+    			<option value="">Continent</option>
+   				<option value="">Inland</option>
+				<option value="">Peninsula</option>
+				<option value="">Random</option>
+  			</select>
+		</div>
+		<button type="submit">Submit</button><button type="reset">Reset</button>
+	</form>
+	<canvas id="canvas" width="250" height="250"></canvas>
+</div>

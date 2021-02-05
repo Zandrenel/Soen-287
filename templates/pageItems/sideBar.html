@@ -1,0 +1,8 @@
+<div class="col-md-3 shadow rounded-bottom" id="sideBar">
+			<ul>
+				{% for key in links %}
+				<li><a href="{{links[key]["link"]}}">{{links[key]["hook"]}}</a></li>
+				{% endfor %}
+			</ul>
+
+		</div> 

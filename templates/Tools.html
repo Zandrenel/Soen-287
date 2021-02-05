@@ -1,0 +1,54 @@
+{% extends "Template_base.html" %}
+{% block styles %}
+{{ super() }}
+<script type="text/javascript" src="/static/javaScript/NameGenerator.js"></script>
+<script type="text/javascript">
+	function changeTool(tool){
+		console.log(tool);
+		
+		if(tool=="MapMaker"){
+			document.getElementById("MapMaker").className="d-block";
+			console.log("MapMaker should be showing")
+		}
+		else{
+			document.getElementById("MapMaker").className="d-none";
+			console.log("MapMaker should be hidden")
+		}
+
+		if(tool=="NameGenerator")
+			document.getElementById("NameGenerator").className="d-block";
+		else
+			document.getElementById("NameGenerator").className="d-none";
+
+		if(tool=="Tool")
+			document.getElementById("MainTool").className="";
+		else
+			document.getElementById("MainTool").className="d-none";
+		
+	}
+</script>
+{% endblock %}
+{% block body %}
+		<div class="col-md-9 container-fluid bg-success" id="body">
+			<p>
+				<form>
+					<select name="Tool" class="custom-select" onchange="changeTool(this.value)">
+   						<option selected>Tool</option>
+						<option value="MapMaker">Map Maker</option>
+						<option value="NameGenerator">Random Name Generator</option>
+  					</select>
+				</form>
+				<div id="MainTool">
+				{% for key in text.Tools %}
+				<p>{{text.Tools[key]["text"]}}</p>
+				{% endfor %}
+				</div>
+				<div id="MapMaker" class="d-none">
+					{% include 'pageItems/MapMaker.html' %}
+				</div>
+				<div id="NameGenerator" class="d-none">
+					{% include 'pageItems/NameGenerator.html' %}
+				</div>
+			</p>
+		</div>
+{% endblock %}

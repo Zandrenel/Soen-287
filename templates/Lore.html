@@ -1,0 +1,17 @@
+{% extends 'Template_base.html' %}
+  
+{% block head %}
+
+{% endblock %}
+{% block body %}
+{{form.csrf_token}}
+<script type="text/javascript" src="/static/javaScript/editorMode.js" ></script>
+{% if session['Admin'] %}
+
+</div>
+{% else %}
+<div id='sideNameBar'>
+	
+</div>
+{% endif %}
+{% endblock %}
